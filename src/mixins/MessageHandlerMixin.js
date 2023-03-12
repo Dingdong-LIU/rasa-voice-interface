@@ -13,18 +13,18 @@ const MessageHandlerMixin = {
 				// console.log('text:', text);
 				this.$store.commit('emptyIncomingMessage');
 				this.$store.commit('addOutgoingMessage', { text: this.currentInput });
-				this.$socket.emit('user_uttered', { message: text, room: this.userId });
+				this.$socket.client.emit('user_uttered', { message: text, room: this.userId });
 			} else if (typeof (text) === 'object') {
 				console.log('type:', typeof (text));
 				this.$store.commit('emptyIncomingMessage');
 				// this.$store.commit('addOutgoingMessage', { text: this.currentInput });
-				this.$socket.emit('user_uttered', { message: text, room: this.userId });
+				this.$socket.client.emit('user_uttered', { message: text, room: this.userId });
 			}
 		},
 		sendQrPayloadToBot: function(qrObj) {
 			if (qrObj.text && qrObj.payload) {
 				this.$store.commit('addOutgoingMessage', qrObj);
-				this.$socket.emit('user_uttered', { message: qrObj.payload, room: this.userId });
+				this.$socket.client.emit('user_uttered', { message: qrObj.payload, room: this.userId });
 				// this.$store.commit('hideComponentsAfterSend');
 			}
 		},

@@ -6,6 +6,9 @@ module.exports = {
 	filenameHashing: false,
 	productionSourceMap: false,
 	integrity: false,
+	devServer: {
+		proxy: 'http://localhost:5005'
+	},
 	css: {
 		extract: false,
 		loaderOptions: {

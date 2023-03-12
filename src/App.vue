@@ -133,7 +133,7 @@ export default {
 	sockets: {
 		connect() {
 			console.log('socket connected~~~~');
-			this.$socket.emit('session_request', { session_id: this.userId });
+			this.$socket.client.emit('session_request', { session_id: this.userId });
 			this.$store.commit('setActiveConnection', true);
 			this.$store.commit('hideComponentsAfterSend');
 			this.$store.commit('setInputVisible', true);
